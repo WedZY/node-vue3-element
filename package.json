@@ -1,0 +1,23 @@
+{
+  "name": "vue3-element",
+  "version": "1.0.0",
+  "description": "restful api",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WedZY/node-vue3-element.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WedZY/node-vue3-element/issues"
+  },
+  "homepage": "https://github.com/WedZY/node-vue3-element#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
