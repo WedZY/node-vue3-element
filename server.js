@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const app = express();
 const passport = require('passport');
 // 引入数据库
-
 const db = require('./config/keys').mongoURL;
 // 引入users.js
 const users = require('./routes/api/users.js');
@@ -17,6 +16,7 @@ app.use(bodyParser.json());
 //使用routes
 app.use('/api/users', users);
 app.use('/api/profiles', profiles);
+
 const port = process.env.PORT || 5000;
 mongoose
   .connect(db)
