@@ -1,30 +1,39 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <router-view />
 </template>
+<script>
+import jwt_decode from "jwt-decode";
+import { useStore } from "vuex";
+export default {
+  name: "app",
+
+  created() {
+    const store = useStore();
+    if (localStorage.eleToken) {
+      const decoded = jwt_decode(localStorage.eleToken);
+      store.dispatch("setAuthenticatde", this.isEmpth(decoded));
+      store.dispatch("setUser", decoded);
+    }
+  },
+
+  methods: {
+    isEmpth(value) {
+      value === undefined ||
+        value === null ||
+        (typeof value === "object" && Object.keys(value).length === 0) ||
+        (typeof value === "string" && value.trim().length === 0);
+    },
+  },
+};
+</script>
 
 <style>
+html,
+body,
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
 }
 </style>

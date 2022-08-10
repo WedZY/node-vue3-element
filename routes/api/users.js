@@ -11,11 +11,11 @@ const passport = require('passport');
 // @desc 返回的请求json数据
 // @access public
 
-// 查询
+// 注册
 router.post('/register', (req, res) => {
   User.findOne({ email: req.body.email }).then((user) => {
     if (user) {
-      return res.status(400).json('邮箱已被注册');
+      return res.status(201).json('邮箱已被注册');
     } else {
       const avatar = gravatar.url(req.body.email, {
         s: '200',
@@ -49,13 +49,14 @@ router.post('/register', (req, res) => {
 // $route Post api/users/login
 // @desc  返回 token jwt passport
 // @access public
+// 登录
 router.post('/login', (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
   // 查询数据库
   User.findOne({ email }).then((user) => {
     if (!user) {
-      return res.status(404).json('用户不存在');
+      return res.status(301).json('用户不存在');
     }
     // 密码匹配
     bcrypt.compare(password, user.password).then((isMatch) => {

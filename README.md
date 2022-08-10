@@ -14,6 +14,10 @@ npm install nodemon -g
 
 npm install mongoose
 
+<!-- 多个终端启动的项目绑定到一块 一起启动 -->
+
+npm install concurrently
+
 <!-- 获取头像 -->
 
 npm i gravatar
