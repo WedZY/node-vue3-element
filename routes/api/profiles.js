@@ -1,18 +1,16 @@
-const { profile } = require('console');
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const passport = require('passport');
-const Profile = require('../../models/Profile');
+const passport = require("passport");
+const Profile = require("../../models/Profile");
 
 // $route POST api/profiles/add
 // @desc   CreateInformationInterface
 // @access Private
 //
 router.post(
-  '/add',
-  passport.authenticate('jwt', { session: false }),
+  "/add",
+  passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    console.log(res);
     const profileFields = {};
     if (req.body.type) profileFields.type = req.body.type;
     if (req.body.describe) profileFields.describe = req.body.describe;
@@ -20,7 +18,6 @@ router.post(
     if (req.body.expend) profileFields.expend = req.body.expend;
     if (req.body.cash) profileFields.cash = req.body.cash;
     if (req.body.remark) profileFields.remark = req.body.remark;
-
     new Profile(profileFields).save().then((profile) => {
       res.json(profile);
     });
@@ -31,13 +28,13 @@ router.post(
 // @desc  获取单个信息
 // @access Private
 router.get(
-  '/:id',
-  passport.authenticate('jwt', { session: false }),
+  "/:id",
+  passport.authenticate("jwt", { session: false }),
   (req, res) => {
     Profile.findOne({ _id: req.params.id })
       .then((profile) => {
         if (!profile) {
-          return res.status(404).json('没有任何内容');
+          return res.status(404).json("没有任何内容");
         }
         res.json(profile);
       })
@@ -50,13 +47,13 @@ router.get(
 // @access Private
 //
 router.get(
-  '/',
-  passport.authenticate('jwt', { session: false }),
+  "/",
+  passport.authenticate("jwt", { session: false }),
   (req, res) => {
     Profile.find()
       .then((profile) => {
         if (!profile) {
-          return res.status(404).json('没有任何内容');
+          return res.status(404).json("没有任何内容");
         }
         res.json(profile);
       })
@@ -68,8 +65,8 @@ router.get(
 // @desc   editInformationInterfac
 // @access Private
 router.post(
-  '/edit/:id',
-  passport.authenticate('jwt', { session: false }),
+  "/edit/:id",
+  passport.authenticate("jwt", { session: false }),
   (req, res) => {
     const profileFields = {};
     if (req.body.type) profileFields.type = req.body.type;
@@ -92,14 +89,14 @@ router.post(
 // @desc  删除信息
 // @access Private
 router.delete(
-  '/delete/:id',
-  passport.authenticate('jwt', { session: false }),
+  "/delete/:id",
+  passport.authenticate("jwt", { session: false }),
   (req, res) => {
     Profile.findOneAndRemove({ _id: req.params.id })
       .then((profile) => {
-        res.json('删除成功');
+        res.json("删除成功");
       })
-      .catch((err) => console.log('删除失败'));
+      .catch((err) => console.log("删除失败"));
   }
 );
 

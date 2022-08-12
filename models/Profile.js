@@ -1,11 +1,11 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const ProfileSchema = new Schema({
   type: {
     type: String,
   },
-  describr: {
+  describe: {
     type: String,
   },
   income: {
@@ -29,4 +29,4 @@ const ProfileSchema = new Schema({
   },
 });
 
-module.exports = Profile = mongoose.model('profile', ProfileSchema);
+module.exports = Profile = mongoose.model("profile", ProfileSchema);

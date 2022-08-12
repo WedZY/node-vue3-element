@@ -44,7 +44,9 @@ export default {
   setup() {
     const router = useRouter();
     const store = useStore();
-
+    const showinfoList = () => {
+      router.push("/InfoShow");
+    };
     const exit = () => {
       // 清楚token
       localStorage.removeItem("eleToken");
@@ -126,7 +128,7 @@ export default {
   padding: 0 5px;
 }
 .name {
-  line-height: 15px;
+  line-height: 25px;
   text-align: center;
   font-size: 14px;
 }
