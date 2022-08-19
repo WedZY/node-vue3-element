@@ -1,16 +1,16 @@
-const { defineConfig } = require('@vue/cli-service');
+const { defineConfig } = require("@vue/cli-service");
 module.exports = defineConfig({
   transpileDependencies: true,
 });
 
-const path = require('path');
-const debug = process.env.NODE_ENV !== 'production';
+const path = require("path");
+const debug = process.env.NODE_ENV !== "production";
 
 module.exports = {
   publicPath:
-    process.env.NODE_ENV === 'production' ? '/production-sub-path/' : '/',
-  outputDir: 'dist',
-  assetsDir: 'assets',
+    process.env.NODE_ENV === "production" ? "/production-sub-path/" : "/",
+  outputDir: "dist",
+  assetsDir: "assets",
   lintOnSave: false,
   runtimeCompiler: true,
   transpileDependencies: false,
@@ -32,7 +32,7 @@ module.exports = {
   //     // 生产开发配置
   //   }
   // },
-  parallel: require('os').cpus().length > 1,
+  parallel: require("os").cpus().length > 1,
   pluginOptions: {
     // 第三方插件配置
   },
@@ -41,17 +41,17 @@ module.exports = {
   },
   devServer: {
     open: true,
-    host: 'localhost',
+    host: "192.168.1.10",
     port: 8080,
     https: false,
     hot: false,
     proxy: {
-      '/api': {
-        target: 'http://localhost:5000/api/',
+      "/api": {
+        target: "http://192.168.1.10:5000/api/",
         ws: true,
         changOrigin: true,
         pathRewrite: {
-          '^/api': '',
+          "^/api": "",
         },
       },
     },

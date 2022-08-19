@@ -14,10 +14,11 @@ const ProfileSchema = new Schema({
   },
   expend: {
     type: String,
-    required: true,
+    requird: true,
   },
   cash: {
     type: String,
+
     required: true,
   },
   remark: {
@@ -28,5 +29,5 @@ const ProfileSchema = new Schema({
     default: Date.now,
   },
 });
-
+//
 module.exports = Profile = mongoose.model("profile", ProfileSchema);
